@@ -68,3 +68,23 @@ speakBtn.addEventListener("click", () => {
 
   speechSynthesis.speak(utterance);
 });
+
+clearBtn.addEventListener("click", () => {
+  text.value = "";
+  charCount.textContent = 0;
+  wordCount.textContent = 0;
+  speechSynthesis.cancel();
+});
+
+
+// ------------------ COUNTERS (FIX) ------------------
+text.addEventListener("input", () => {
+  const value = text.value;
+
+  charCount.textContent = value.length;
+
+  wordCount.textContent = value.trim()
+    ? value.trim().split(/\s+/).length
+    : 0;
+});
+
