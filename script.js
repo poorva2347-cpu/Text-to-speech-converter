@@ -60,13 +60,23 @@ speakBtn.addEventListener("click", () => {
     return;
   }
 
+  // 🔴 REQUIRED for Android (clears previous voice lock)
   speechSynthesis.cancel();
 
-  const utterance = new SpeechSynthesisUtterance(content);
-  const selectedVoice = voices[voiceSelect.value];
-  if (selectedVoice) utterance.voice = selectedVoice;
+  // 🔴 ALWAYS create a new utterance
+  const utterance = new SpeechSynthesisUtterance();
+  utterance.text = content;
 
-  speechSynthesis.speak(utterance);
+  // 🔴 ANDROID-SAFE voice selection
+  const selectedVoice = voices[voiceSelect.selectedIndex];
+  if (selectedVoice) {
+    utterance.voice = selectedVoice;
+  }
+
+  // 🔴 Small delay allows Android to apply the new voice
+  setTimeout(() => {
+    speechSynthesis.speak(utterance);
+  }, 100);
 });
 
 clearBtn.addEventListener("click", () => {
@@ -87,4 +97,3 @@ text.addEventListener("input", () => {
     ? value.trim().split(/\s+/).length
     : 0;
 });
-
