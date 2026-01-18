@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text To Speech Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+    <h1>
+      <h1>Text To Speech <span class="highlight">Converter</span></h1>
+      <div class="underline"></div>
+    </h1>
+
+    <div class="textarea-box">
+      <textarea id="text" placeholder="Write anything here..."></textarea>
+      <div class="counter">
+        <span id="wordCount">0</span> words |
+        <span id="charCount">0</span> characters
+      </div>
+    </div>
+
+    <div class="controls">
+      <select id="voiceSelect"></select>
+
+<button id="speakBtn" class="icon-btn">
+  <img src="img/play_15486660.png" alt="Listen" />
+  <span>Listen</span>
+</button>
+
+      <button id="clearBtn">Clear Text</button>
+    </div>
+  </div>
+  <div id="toast">Please enter some text to listen</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
